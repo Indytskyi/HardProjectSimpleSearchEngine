@@ -1,18 +1,19 @@
 package com.indytskyi.strategy;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class FindPerson {
-    private TypeOfSearch typeOfSearch;
+    private BasicSearcher basicSearcher;
 
-    public void setTypeOfSearch(TypeOfSearch typeOfSearch) {
-        this.typeOfSearch = typeOfSearch;
+    public void setTypeOfSearch(BasicSearcher basicSearcher) {
+        this.basicSearcher = basicSearcher;
     }
 
-    public Set<Integer> search(Map<String, ArrayList<Integer>> wordOfPersons) {
-        return typeOfSearch.search(wordOfPersons);
+    public Set<Integer> search(Map<String, List<Integer>> wordOfPersons) {
+        return basicSearcher.search(wordOfPersons);
     }
 
 }

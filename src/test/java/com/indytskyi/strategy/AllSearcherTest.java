@@ -6,12 +6,13 @@ import static org.junit.Assert.assertEquals;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.junit.AfterClass;
 import org.junit.Test;
 
-public class AllSearchTest {
+public class AllSearcherTest {
 
     @AfterClass
     public static void afterClass() {
@@ -20,7 +21,7 @@ public class AllSearchTest {
     }
 
     @Test
-    public void CheckIfWeFoundPeopleWithALLDataThatWeInputWithOneArgument() throws IOException {
+    public void CheckIfWeFoundPeopleWithALLDataThatWeInputWithOneArgument() {
         //GIVEN
         String testInputs = """
                 djo@gmail.com
@@ -29,12 +30,12 @@ public class AllSearchTest {
         ByteArrayInputStream in = new ByteArrayInputStream(testInputs.getBytes());
         System.setIn(in);
 
-        AllSearch allSearch = new AllSearch();
-        Map<String, ArrayList<Integer>> mapFinder = createMapOfAllWordsFromList();
+        AllSearcher allSearcher = new AllSearcher();
+        Map<String, List<Integer>> mapFinder = createMapOfAllWordsFromList();
         Set<Integer> expected = Set.of(0, 1);
 
         //WHEN
-        Set<Integer> retrieved = allSearch.search(mapFinder);
+        Set<Integer> retrieved = allSearcher.search(mapFinder);
 
         //THEN
         assertEquals(expected, retrieved);
@@ -50,12 +51,12 @@ public class AllSearchTest {
         ByteArrayInputStream in = new ByteArrayInputStream(testInputs.getBytes());
         System.setIn(in);
 
-        AllSearch allSearch = new AllSearch();
-        Map<String, ArrayList<Integer>> mapFinder = createMapOfAllWordsFromList();
+        AllSearcher allSearcher = new AllSearcher();
+        Map<String, List<Integer>> mapFinder = createMapOfAllWordsFromList();
         Set<Integer> expected = Set.of(2);
 
         //WHEN
-        Set<Integer> retrieved = allSearch.search(mapFinder);
+        Set<Integer> retrieved = allSearcher.search(mapFinder);
 
         //THEN
         assertEquals(expected, retrieved);

@@ -5,12 +5,13 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
-public class NoneSearchTest {
+public class NoneSearcherTest {
 
     @Before
     public void setUp() throws Exception {
@@ -21,12 +22,12 @@ public class NoneSearchTest {
     @Test
     public void CheckIfWeFoundPeopleWithoutArgumentsThatWeInput() {
         //GIVEN
-        NoneSearch noneSearch = new NoneSearch();
-        Map<String, ArrayList<Integer>> mapFinder = createMapOfAllWordsFromList();
+        NoneSearcher noneSearcher = new NoneSearcher();
+        Map<String, List<Integer>> mapFinder = createMapOfAllWordsFromList();
         Set<Integer> expected = Set.of(2);
 
         //WHEN
-        Set<Integer> retrieved = noneSearch.search(mapFinder);
+        Set<Integer> retrieved = noneSearcher.search(mapFinder);
 
         //THEN
         assertEquals(expected, retrieved);

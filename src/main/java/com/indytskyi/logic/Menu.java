@@ -1,10 +1,10 @@
 package com.indytskyi.logic;
 
 
-import com.indytskyi.strategy.AllSearch;
-import com.indytskyi.strategy.AnySearch;
+import com.indytskyi.strategy.AllSearcher;
+import com.indytskyi.strategy.AnySearcher;
 import com.indytskyi.strategy.FindPerson;
-import com.indytskyi.strategy.NoneSearch;
+import com.indytskyi.strategy.NoneSearcher;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -19,7 +19,6 @@ public class Menu {
     public Menu(FindPerson findPerson) {
         this.findPerson = findPerson;
     }
-
 
     public void menu() {
         Scanner scanner = new Scanner(System.in);
@@ -65,17 +64,15 @@ public class Menu {
 
             switch (strategy) {
                 case "ALL" -> {
-                    findPerson.setTypeOfSearch(new AllSearch());
+                    findPerson.setTypeOfSearch(new AllSearcher());
                     return;
                 }
-
                 case "ANY" -> {
-                    findPerson.setTypeOfSearch(new AnySearch());
+                    findPerson.setTypeOfSearch(new AnySearcher());
                     return;
                 }
-
                 case "NONE" -> {
-                    findPerson.setTypeOfSearch(new NoneSearch());
+                    findPerson.setTypeOfSearch(new NoneSearcher());
                     return;
                 }
             }
@@ -96,6 +93,7 @@ public class Menu {
 
 
     private void printAllPerson() {
+
         System.out.println("\n=== List of people ===");
         peopleData.forEach(System.out::println);
         System.out.println();
@@ -103,12 +101,10 @@ public class Menu {
 
     public void getFromFileDataOfPeople(String directory) {
         File file = new File(directory);
-
         try (Scanner scanner1 = new Scanner(file)) {
             while (scanner1.hasNext()) {
                 peopleData.add(scanner1.nextLine());
             }
-
         } catch (FileNotFoundException e) {
             System.out.println("There is no such file!");
         }

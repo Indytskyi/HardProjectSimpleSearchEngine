@@ -2,14 +2,15 @@ package com.indytskyi.strategy;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-public class AllSearch implements TypeOfSearch {
+public class AllSearcher implements BasicSearcher {
 
     @Override
-    public Set<Integer> search(Map<String, ArrayList<Integer>> wordOfPersons) {
+    public Set<Integer> search(Map<String, List<Integer>> wordOfPersons) {
 
         Scanner scanner = new Scanner(System.in);
         final Set<Integer> filterPeople = new LinkedHashSet<>();

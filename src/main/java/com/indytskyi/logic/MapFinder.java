@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 public class MapFinder {
 
-    private final Map<String, ArrayList<Integer>> wordOfPersons = new TreeMap<>();
+    private final Map<String, List<Integer>> wordOfPersons = new TreeMap<>();
 
     void fillingMap(List<String> peopleData) {
 
@@ -17,16 +17,18 @@ public class MapFinder {
             String[] personData = peopleData.get(i).toLowerCase().split(" ");
 
             for (String data: personData) {
-                if (!wordOfPersons.containsKey(data)) {
-                    wordOfPersons.put(data, new ArrayList<>(List.of(i)));
-                } else {
+                if (wordOfPersons.containsKey(data)) {
                     wordOfPersons.get(data).add(i);
+                    continue;
                 }
+                List<Integer> rows = new ArrayList<>();
+                rows.add(i);
+                wordOfPersons.put(data, rows);
             }
         }
     }
 
-    public Map<String, ArrayList<Integer>> getWordOfPersons() {
+    public Map<String, List<Integer>> getWordOfPersons() {
         return wordOfPersons;
     }
 }
