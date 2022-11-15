@@ -4,23 +4,25 @@ package com.indytskyi.strategy;
 import static com.indytskyi.MapFactory.createMapOfAllWordsFromList;
 
 import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class FindPersonTest {
 
+    FindPerson findPerson;
+    @Before
+    public void setUp() {
+        findPerson = new FindPerson();
+    }
+
     @Test
     public void setTypeOfSearch() {
-        //GIVEN
-        FindPerson findPerson = new FindPerson();
-
         //THEN
         findPerson.setTypeOfSearch(new AllSearcher());
-
     }
 
     @Test
@@ -32,7 +34,6 @@ public class FindPersonTest {
                 """;
         ByteArrayInputStream in = new ByteArrayInputStream(testInputs.getBytes());
         System.setIn(in);
-        FindPerson findPerson = new FindPerson();
         findPerson.setTypeOfSearch(new AllSearcher());
         Map<String, List<Integer>> mapFinder = createMapOfAllWordsFromList();
         var expected = Set.of(0, 1);

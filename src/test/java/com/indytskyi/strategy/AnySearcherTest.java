@@ -4,7 +4,6 @@ import static com.indytskyi.MapFactory.createMapOfAllWordsFromList;
 import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
